@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Dcard frontend Demo
+## Introduce 
+This homework **display the taiwanese spots**, try to access https://ptx.transportdata.tw/MOTC?t=Tourism&v=2 api, and use **React hook** to show **spot's name,  description and location**. And also can link different location to see the different spots.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Demo Link**: http://dcard-frontend-demo.surge.sh/scenicSpot
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
+## How to use ?
+- Script: 
+```script
+Run: yarn start
+Build: yarn build
+Deploy: yarn deploy
+```
+- Scripts decription: 
+    - `yarn start`:  Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
+    - `yarn build`: Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+    - `yarn deploy`: Build the project and deploy this project to http://dcard-frontend-demo.surge.sh.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Architecture
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Entry point
+```
+./scr/index.jsx
+```
 
-### `yarn eject`
+### node module:
+- **react**: inital react library
+- **react-router-dom**: router library
+- **react-scripts**: easy to run react script
+- **styled-components**: css library
+- **surge**: delopy website to server
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Project hierarchy 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![](https://i.imgur.com/UMBIZJ2.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### api: 
+![](https://i.imgur.com/3GmbZ4p.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+call https://ptx.transportdata.tw/MOTC?t=Tourism&v=2 api function, and let main file to call, and also wrap to restful api ( get, post, put, delete ). The api detail configuration is in config.jsx.
 
-## Learn More
+#### assets
+put the static object, like images or multilingual file. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### components
+![](https://i.imgur.com/06p5Fif.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Break up the user interface into separate pieces that can then be reused and handled independently.
 
-### Code Splitting
+#### core
+![](https://i.imgur.com/AeK3TI1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Put utility objects, like constants (unit), function, hoc, ... . In here, device.jsx is for RWD and spot.jsx is for all taiwanese spots.
 
-### Analyzing the Bundle Size
+#### routes
+![](https://i.imgur.com/vgV6FVQ.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Setting all pages' router. In here, only set ```/scenicSpot``` route.
 
-### Making a Progressive Web App
+#### view
+![](https://i.imgur.com/Ypr8hxJ.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Each pages will put in here, the main file is index.jsx ( main logic ), then css file is styles.jsx ( use styles-components to wrap HTML to components ).
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
